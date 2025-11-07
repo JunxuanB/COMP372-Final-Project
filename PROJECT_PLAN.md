@@ -117,6 +117,40 @@
 - **Input Format**: Graphs represented using adjacency lists
 - **Output Format**: Animations as .gif or .png files, report as PDF or Word document
 
+### 1.4 Code Style Guidelines (Student Project Standards)
+
+**IMPORTANT: This is a student assignment, not enterprise software!**
+
+**Code Documentation:**
+- Use brief, clear docstrings (1-2 lines max for most methods)
+- Keep comments minimal and essential only
+- DO NOT include time/space complexity in every docstring
+- DO NOT write extensive technical documentation in code files
+- Example of GOOD docstring: `"""Add a vertex to the graph."""`
+- Example of TOO MUCH: `"""Add a new vertex to the graph. Time complexity: O(1). Space complexity: O(1). Args: vertex (str): The vertex identifier..."""`
+
+**Code Structure:**
+- Keep files concise (100-300 lines per file is good)
+- Use type hints for clarity, but don't over-document
+- Write clean, readable code without excessive comments
+- Focus on correctness over optimization
+
+**Tests:**
+- Keep test files simple and focused
+- Remove unnecessary test cases (keep core functionality tests)
+- Minimal docstrings in tests (test name should be self-explanatory)
+
+**Documentation Files:**
+- INSTALLATION_LOG.md: Just installation steps, no hardware details
+- USAGE.md: Essential commands only, not extensive tutorials
+- Keep README concise and practical
+- Save detailed explanations for the project report
+
+**Remember:**
+- The code should look like it was written by a competent student, not a senior engineer
+- Grading values clarity and correctness, not "enterprise-level" documentation
+- Over-documentation can actually hurt your grade by looking copied/AI-generated
+
 ---
 
 ## 2. GRADING CRITERIA ALIGNMENT
