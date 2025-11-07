@@ -19,7 +19,7 @@ python3 -m pytest tests/ -v
 
 ### 3. Launch Interactive Demo
 ```bash
-PYTHONPATH=. python3 tests/interactive_demo.py
+PYTHONPATH=. python3 src/ui.py
 ```
 
 ### 4. Generate Sample Animations
@@ -195,7 +195,7 @@ print("Animation saved!")
 ### Starting the Demo
 
 ```bash
-PYTHONPATH=. python3 tests/interactive_demo.py
+PYTHONPATH=. python3 src/ui.py
 ```
 
 ### Interactive Menu

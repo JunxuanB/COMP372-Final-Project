@@ -60,7 +60,7 @@
 
 ### ✅ Phase 5: Interactive Demo (COMPLETE)
 **Files Created:**
-- [tests/interactive_demo.py](tests/interactive_demo.py) - Command-line demo (320 lines)
+- [src/ui.py](src/ui.py) - Command-line demo (320 lines)
 
 **Features:**
 - Menu-driven interface
@@ -75,7 +75,7 @@
 
 **How to Run:**
 ```bash
-PYTHONPATH=. python3 tests/interactive_demo.py
+PYTHONPATH=. python3 src/ui.py
 ```
 
 ### ✅ Phase 6: Performance Testing and Analysis (COMPLETE)
@@ -312,7 +312,7 @@ python3 -m pip install -r requirements.txt
 python3 -m pytest tests/ -v
 
 # Launch interactive demo
-PYTHONPATH=. python3 tests/interactive_demo.py
+PYTHONPATH=. python3 src/ui.py
 
 # Generate sample animations
 PYTHONPATH=. python3 tests/generate_animations.py
@@ -331,7 +331,7 @@ Show: All 23 algorithm tests passing
 
 **Demo 2: Interactive Demo**
 ```bash
-PYTHONPATH=. python3 tests/interactive_demo.py
+PYTHONPATH=. python3 src/ui.py
 ```
 Show:
 1. Load sample graph (option 1)

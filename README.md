@@ -121,7 +121,7 @@ You should see all tests passing (60+ tests).
 
 Launch the interactive command-line interface:
 ```bash
-PYTHONPATH=. python3 tests/interactive_demo.py
+PYTHONPATH=. python3 src/ui.py
 ```
 
 **Interactive Menu:**
@@ -140,7 +140,7 @@ PYTHONPATH=. python3 tests/interactive_demo.py
 **Example Workflow:**
 ```bash
 # Start demo
-PYTHONPATH=. python3 tests/interactive_demo.py
+PYTHONPATH=. python3 src/ui.py
 
 # Choose option 1 to load sample graph
 # Choose option 3 to view graph (opens image)
@@ -324,7 +324,7 @@ def dijkstra(graph: Graph, source: str, fringe_type: str = 'heap'):
 **Issue**: `ModuleNotFoundError: No module named 'src'`
 **Solution**: Set PYTHONPATH before running:
 ```bash
-PYTHONPATH=. python3 tests/interactive_demo.py
+PYTHONPATH=. python3 src/ui.py
 ```
 
 **Issue**: Tests fail with import errors
