@@ -30,7 +30,7 @@ Both algorithms are implemented with two different fringe (priority queue) data 
 - **Sorted Linked List**: O(n) insert, O(1) extract
 
 The project includes:
-- Interactive command-line demo
+- Interactive GUI for graph manipulation
 - Step-by-step algorithm visualization
 - Animated GIF generation
 - Comprehensive performance benchmarking
@@ -47,20 +47,18 @@ The project includes:
 ✅ Sorted linked list for comparison
 ✅ Graph data structure with adjacency list
 
-### Interactive Demo
-✅ Command-line interface for algorithm testing
+### Interactive UI
+✅ Tkinter-based graphical interface
 ✅ Incremental edge addition
 ✅ Algorithm selection (Dijkstra/Prim)
 ✅ Fringe type selection (Heap/List)
-✅ Graph visualization (saves images)
+✅ Real-time visualization
 ✅ Results display with execution time
-✅ Performance comparison mode
 
 ### Visualization
 ✅ Step-by-step algorithm animation
-✅ GIF generation with color-coded states
-✅ Automatic image viewing
-✅ Color scheme:
+✅ GIF generation
+✅ Color-coded nodes and edges:
   - 🔴 Red: Current node being processed
   - 🔵 Blue: Visited nodes
   - 🟢 Green: Selected edges (MST/shortest path)
@@ -79,19 +77,20 @@ The project includes:
 ### Software
 - **Python**: 3.9 or higher
 - **Operating System**: macOS, Linux, or Windows
+- **Display**: For GUI and visualization
 
 ### Python Libraries
-- `matplotlib` (≥3.5.0): Visualization and plotting
-- `networkx` (≥2.6.0): Graph layout algorithms
-- `Pillow` (≥9.0.0): GIF animation generation
-- `numpy` (≥1.21.0): Numerical operations (optional)
-- `pytest` (≥8.0.0): Testing framework
+- `matplotlib` (3.9.4): Visualization and plotting
+- `networkx` (3.2.1): Graph layout algorithms
+- `Pillow` (11.3.0): GIF animation generation
+- `numpy` (2.0.2): Numerical operations
+- `pytest` (8.4.2): Testing framework
 
 ---
 
 ## Installation
 
-### Step 1: Navigate to Project Directory
+### Step 1: Clone or Download the Project
 ```bash
 cd /path/to/COMP372-Final-Project
 ```
@@ -117,39 +116,35 @@ You should see all tests passing (60+ tests).
 
 ## Usage
 
-### Running the Interactive Demo
+### Running the Interactive GUI
 
-Launch the interactive command-line interface:
+Launch the graphical interface:
 ```bash
-PYTHONPATH=. python3 tests/interactive_demo.py
+PYTHONPATH=. python3 src/ui.py
 ```
 
-**Interactive Menu:**
-```
-1. Load Sample Graph
-2. Add Edge
-3. View Graph (generates image)
-4. Run Dijkstra's Algorithm
-5. Run Prim's MST Algorithm
-6. Compare Heap vs List Performance
-7. Generate Animation
-8. Show Graph Summary
-0. Exit
-```
+**Using the GUI:**
 
-**Example Workflow:**
-```bash
-# Start demo
-PYTHONPATH=. python3 tests/interactive_demo.py
+1. **Add Edges**:
+   - Enter Node 1, Node 2, and Weight
+   - Click "Add Edge"
+   - Or click "Load Sample" for a pre-built graph
 
-# Choose option 1 to load sample graph
-# Choose option 3 to view graph (opens image)
-# Choose option 4 to run Dijkstra
-#   - Enter start node: A
-#   - Choose fringe: heap
-#   - Generate animation: y
-# Choose option 6 to compare performance
-```
+2. **Run Algorithm**:
+   - Select algorithm (Dijkstra or Prim)
+   - Enter start node (e.g., "A")
+   - Choose fringe type (Heap or List)
+   - Click "Run Algorithm"
+
+3. **View Results**:
+   - See execution time and algorithm results
+   - For Dijkstra: shortest distances to all nodes
+   - For Prim: MST edges and total weight
+
+4. **Generate Animation**:
+   - After running an algorithm
+   - Click "Generate Animation"
+   - GIF saved to `animations/` directory
 
 ### Running Algorithms Programmatically
 
@@ -205,13 +200,13 @@ COMP372-Final-Project/
 │   ├── graph.py              # Graph data structure (adjacency list)
 │   ├── fringe.py             # Binary heap and sorted linked list
 │   ├── algorithms.py         # Dijkstra and Prim implementations
-│   └── visualizer.py         # Animation and visualization
+│   ├── visualizer.py         # Animation and visualization
+│   └── ui.py                 # Tkinter GUI (main application)
 │
-├── tests/                    # Tests and utilities
+├── tests/                    # Tests and benchmarks
 │   ├── test_graph.py         # Graph unit tests
 │   ├── test_fringe.py        # Fringe unit tests
-│   ├── test_algorithms.py    # Algorithm unit tests
-│   ├── interactive_demo.py   # Interactive command-line demo
+│   ├── test_algorithms.py   # Algorithm unit tests
 │   ├── generate_animations.py # Animation generator
 │   └── performance_test.py   # Performance benchmarks
 │
@@ -324,7 +319,13 @@ def dijkstra(graph: Graph, source: str, fringe_type: str = 'heap'):
 **Issue**: `ModuleNotFoundError: No module named 'src'`
 **Solution**: Set PYTHONPATH before running:
 ```bash
-PYTHONPATH=. python3 tests/interactive_demo.py
+PYTHONPATH=. python3 src/ui.py
+```
+
+**Issue**: GUI window doesn't appear
+**Solution**: Ensure Tkinter is installed (usually comes with Python):
+```bash
+python3 -m tkinter  # Should open a test window
 ```
 
 **Issue**: Tests fail with import errors
@@ -335,11 +336,6 @@ python3 -m pip install pytest
 
 **Issue**: Animation generation is slow
 **Solution**: Reduce graph size or animation duration in code
-
-**Issue**: Images don't open automatically
-**Solution**: Images are saved in current directory. Open manually:
-- `temp_graph.png` - Graph visualization
-- `animations/*.gif` - Algorithm animations
 
 ---
 

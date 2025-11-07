@@ -58,22 +58,24 @@
 - prim_medium_heap.gif (66KB)
 - prim_medium_list.gif (66KB)
 
-### ✅ Phase 5: Interactive UI (COMPLETE)
+### ✅ Phase 5: Interactive Demo (COMPLETE)
 **Files Created:**
-- [src/ui.py](src/ui.py) - Tkinter GUI (369 lines)
+- [tests/interactive_demo.py](tests/interactive_demo.py) - Command-line demo (320 lines)
 
 **Features:**
-- Interactive graph editor
+- Menu-driven interface
 - Edge addition with validation
 - Algorithm selection (Dijkstra/Prim)
 - Fringe type selection (Heap/List)
-- Real-time results display
-- Animation generation from UI
+- Results display with execution time
+- Graph visualization (saves/opens images)
+- Animation generation
+- Performance comparison mode
 - Sample graph loading
 
 **How to Run:**
 ```bash
-PYTHONPATH=. python3 src/ui.py
+PYTHONPATH=. python3 tests/interactive_demo.py
 ```
 
 ### ✅ Phase 6: Performance Testing and Analysis (COMPLETE)
@@ -129,7 +131,7 @@ PYTHONPATH=. python3 src/ui.py
 ✅ **Animations**: 8 GIF files demonstrating algorithms
 ✅ **Performance Analysis**: CSV data + visual charts
 ✅ **Documentation**: README + technical docs
-✅ **Interactive UI**: Fully functional Tkinter application
+✅ **Interactive Demo**: Command-line interface with visualization
 ⏳ **Project Report**: Template and guidance provided (to be written)
 
 ---
@@ -205,7 +207,7 @@ PYTHONPATH=. python3 src/ui.py
 - Heap position tracking for O(log n) decrease-key
 - Handling edge cases (disconnected graphs, single nodes)
 - Animation generation and frame synchronization
-- UI layout and user experience
+- Command-line interface design and user experience
 
 **Learning Outcomes:**
 - Understanding of greedy algorithms
@@ -309,8 +311,8 @@ python3 -m pip install -r requirements.txt
 # Run all tests
 python3 -m pytest tests/ -v
 
-# Launch interactive UI
-PYTHONPATH=. python3 src/ui.py
+# Launch interactive demo
+PYTHONPATH=. python3 tests/interactive_demo.py
 
 # Generate sample animations
 PYTHONPATH=. python3 tests/generate_animations.py
@@ -327,15 +329,16 @@ python3 -m pytest tests/test_algorithms.py -v
 ```
 Show: All 23 algorithm tests passing
 
-**Demo 2: Interactive UI**
+**Demo 2: Interactive Demo**
 ```bash
-PYTHONPATH=. python3 src/ui.py
+PYTHONPATH=. python3 tests/interactive_demo.py
 ```
 Show:
-1. Load sample graph
-2. Run Dijkstra with heap
-3. View results
-4. Generate animation
+1. Load sample graph (option 1)
+2. View graph visualization (option 3)
+3. Run Dijkstra with heap (option 4)
+4. View results and generate animation
+5. Compare performance (option 6)
 
 **Demo 3: Performance Comparison**
 Show: results/comparison_charts.png
