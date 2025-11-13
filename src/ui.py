@@ -1,7 +1,5 @@
-"""
-Interactive demo for graph algorithms.
-Simple text-based interface that generates visualizations as image files.
-"""
+# Interactive UI for demonstrating Dijkstra and Prim algorithms
+# Simple text-based menu with visualization support
 
 import sys
 import os
@@ -15,7 +13,7 @@ import matplotlib.pyplot as plt
 
 
 def open_image(filepath):
-    """Open image with system default viewer."""
+    # try to open image with system default viewer
     system = platform.system()
     try:
         if system == 'Darwin':  # macOS
@@ -30,7 +28,7 @@ def open_image(filepath):
 
 
 def create_sample_graph():
-    """Create sample graph for demo."""
+    # sample graph for testing - 5 vertices, 7 edges
     graph = Graph(directed=False)
     graph.add_edge('A', 'B', 4.0)
     graph.add_edge('A', 'C', 2.0)
@@ -43,7 +41,7 @@ def create_sample_graph():
 
 
 def visualize_graph(graph, filename='temp_graph.png'):
-    """Save graph visualization to file."""
+    # save graph visualization to file
     fig, ax, pos = draw_graph(graph, title="Current Graph")
     plt.savefig(filename, dpi=150, bbox_inches='tight')
     plt.close(fig)
@@ -51,7 +49,6 @@ def visualize_graph(graph, filename='temp_graph.png'):
 
 
 def print_menu():
-    """Print main menu."""
     print("\n" + "=" * 60)
     print("GRAPH ALGORITHMS - Interactive Demo")
     print("=" * 60)
@@ -68,7 +65,7 @@ def print_menu():
 
 
 def show_graph_summary(graph):
-    """Display graph structure."""
+    # Display graph information
     print("\n" + "=" * 60)
     print("GRAPH SUMMARY")
     print("=" * 60)
@@ -86,7 +83,7 @@ def show_graph_summary(graph):
 
 
 def run_dijkstra_interactive(graph):
-    """Run Dijkstra with user input."""
+    # Run Dijkstra with user input
     print("\n" + "-" * 60)
     print("DIJKSTRA'S SHORTEST PATH ALGORITHM")
     print("-" * 60)
@@ -95,6 +92,7 @@ def run_dijkstra_interactive(graph):
         print("Error: Graph is empty. Load a graph first.")
         return
 
+    # get start vertex from user
     print(f"Available vertices: {sorted(graph.get_vertices())}")
     start = input("Enter start vertex: ").strip()
 
@@ -102,6 +100,7 @@ def run_dijkstra_interactive(graph):
         print(f"Error: Vertex '{start}' not in graph.")
         return
 
+    # get fringe type
     print("\nFringe types: heap, list")
     fringe = input("Enter fringe type (default: heap): ").strip() or "heap"
 
@@ -109,6 +108,7 @@ def run_dijkstra_interactive(graph):
         print("Invalid fringe type. Using 'heap'.")
         fringe = 'heap'
 
+    # run algorithm and time it
     print(f"\nRunning Dijkstra from '{start}' with {fringe}...")
 
     import time
@@ -116,6 +116,7 @@ def run_dijkstra_interactive(graph):
     distances, previous, history = dijkstra(graph, start, fringe)
     elapsed = (time.time() - start_time) * 1000
 
+    # print results
     print("\n" + "=" * 60)
     print("RESULTS")
     print("=" * 60)
@@ -133,7 +134,7 @@ def run_dijkstra_interactive(graph):
 
     print("=" * 60)
 
-    # Ask if user wants to generate animation
+    # ask if user wants animation
     gen = input("\nGenerate animation? (y/n): ").strip().lower()
     if gen == 'y':
         os.makedirs('animations', exist_ok=True)
@@ -147,7 +148,7 @@ def run_dijkstra_interactive(graph):
 
 
 def run_prim_interactive(graph):
-    """Run Prim with user input."""
+    # Run Prim's MST with user input
     print("\n" + "-" * 60)
     print("PRIM'S MINIMUM SPANNING TREE ALGORITHM")
     print("-" * 60)
@@ -160,6 +161,7 @@ def run_prim_interactive(graph):
         print("Error: Prim's algorithm requires an undirected graph.")
         return
 
+    # get start vertex
     print(f"Available vertices: {sorted(graph.get_vertices())}")
     start = input("Enter start vertex: ").strip()
 
@@ -167,6 +169,7 @@ def run_prim_interactive(graph):
         print(f"Error: Vertex '{start}' not in graph.")
         return
 
+    # get fringe type
     print("\nFringe types: heap, list")
     fringe = input("Enter fringe type (default: heap): ").strip() or "heap"
 
@@ -174,6 +177,7 @@ def run_prim_interactive(graph):
         print("Invalid fringe type. Using 'heap'.")
         fringe = 'heap'
 
+    # run and time the algorithm
     print(f"\nRunning Prim from '{start}' with {fringe}...")
 
     import time
@@ -181,6 +185,7 @@ def run_prim_interactive(graph):
     mst_edges, total_weight, history = prim(graph, start, fringe)
     elapsed = (time.time() - start_time) * 1000
 
+    # show results
     print("\n" + "=" * 60)
     print("RESULTS")
     print("=" * 60)
@@ -195,7 +200,7 @@ def run_prim_interactive(graph):
 
     print("=" * 60)
 
-    # Ask if user wants to generate animation
+    # optional animation
     gen = input("\nGenerate animation? (y/n): ").strip().lower()
     if gen == 'y':
         os.makedirs('animations', exist_ok=True)
@@ -209,7 +214,7 @@ def run_prim_interactive(graph):
 
 
 def compare_performance(graph):
-    """Compare heap vs list performance."""
+    # compare heap vs list performance for both algorithms
     print("\n" + "-" * 60)
     print("PERFORMANCE COMPARISON: Heap vs List")
     print("-" * 60)
@@ -221,31 +226,30 @@ def compare_performance(graph):
     vertices = list(graph.get_vertices())
     start = vertices[0]
 
-    print(f"Running both Dijkstra and Prim from vertex '{start}'...")
-    print("Testing with both heap and list fringe types...\n")
+    print(f"Running both algorithms from vertex '{start}'...")
+    print("Testing with both heap and list...\n")
 
     import time
 
-    # Dijkstra - Heap
+    # Dijkstra with both fringe types
     start_time = time.time()
     dijkstra(graph, start, 'heap')
     dijk_heap_time = (time.time() - start_time) * 1000
 
-    # Dijkstra - List
     start_time = time.time()
     dijkstra(graph, start, 'list')
     dijk_list_time = (time.time() - start_time) * 1000
 
-    # Prim - Heap
+    # Prim with both fringe types
     start_time = time.time()
     prim(graph, start, 'heap')
     prim_heap_time = (time.time() - start_time) * 1000
 
-    # Prim - List
     start_time = time.time()
     prim(graph, start, 'list')
     prim_list_time = (time.time() - start_time) * 1000
 
+    # print comparison
     print("=" * 60)
     print("PERFORMANCE RESULTS")
     print("=" * 60)
@@ -269,7 +273,7 @@ def compare_performance(graph):
 
 
 def main():
-    """Main interactive loop."""
+    # main loop
     graph = Graph(directed=False)
 
     print("\n" + "=" * 60)

@@ -1,61 +1,62 @@
-"""
-Graph data structure using adjacency list representation.
-For use with Dijkstra's and Prim's algorithms.
-"""
+# Graph data structure using adjacency list representation
+# Supports both directed and undirected weighted graphs
 
 from typing import Dict, List, Set, Tuple, Optional
 from collections import defaultdict
 
 
 class Graph:
-    """
-    Weighted graph using adjacency list representation.
-    Can be directed or undirected, supports weighted edges.
-    """
+    # weighted graph implementation with adjacency list
+    # each vertex maps to a dict of neighbors and edge weights
 
     def __init__(self, directed: bool = False):
         self.directed = directed
+        # adjacency list: vertex -> {neighbor: weight}
         self._adj_list: Dict[str, Dict[str, float]] = defaultdict(dict)
 
     def add_vertex(self, vertex: str) -> None:
-        """Add a vertex to the graph."""
+        # add a vertex to the graph
         if vertex is None or vertex == "":
             raise ValueError("Vertex identifier cannot be None or empty")
         if vertex not in self._adj_list:
             self._adj_list[vertex] = {}
 
     def add_edge(self, u: str, v: str, weight: float) -> None:
-        """Add a weighted edge. For undirected graphs, adds edge in both directions."""
+        # add weighted edge between u and v
+        # for undirected graphs, adds edge in both directions
         if u is None or u == "" or v is None or v == "":
             raise ValueError("Vertex identifiers cannot be None or empty")
         if weight < 0:
             raise ValueError("Edge weight cannot be negative")
 
+        # ensure both vertices exist
         self.add_vertex(u)
         self.add_vertex(v)
+
         self._adj_list[u][v] = weight
 
+        # add reverse edge for undirected graphs
         if not self.directed:
             self._adj_list[v][u] = weight
 
     def get_neighbors(self, vertex: str) -> Dict[str, float]:
-        """Get all neighbors of a vertex with their edge weights."""
+        # return neighbors of a vertex with edge weights
         if vertex not in self._adj_list:
             return {}
         return self._adj_list[vertex].copy()
 
     def get_weight(self, u: str, v: str) -> Optional[float]:
-        """Get edge weight, or None if edge doesn't exist."""
+        # get weight of edge (u, v), or None if doesn't exist
         if u in self._adj_list and v in self._adj_list[u]:
             return self._adj_list[u][v]
         return None
 
     def get_vertices(self) -> Set[str]:
-        """Get all vertices in the graph."""
+        # return all vertices in the graph
         return set(self._adj_list.keys())
 
     def get_edges(self) -> List[Tuple[str, str, float]]:
-        """Get all edges as list of (source, dest, weight) tuples."""
+        # return all edges as (source, dest, weight) tuples
         edges = []
         seen_edges = set()
 
@@ -64,7 +65,7 @@ class Graph:
                 if self.directed:
                     edges.append((u, v, weight))
                 else:
-                    # For undirected graphs, avoid duplicates
+                    # avoid duplicates in undirected graph
                     edge = tuple(sorted([u, v]))
                     if edge not in seen_edges:
                         edges.append((u, v, weight))
@@ -72,22 +73,23 @@ class Graph:
         return edges
 
     def has_vertex(self, vertex: str) -> bool:
-        """Check if vertex exists."""
+        # check if vertex exists
         return vertex in self._adj_list
 
     def has_edge(self, u: str, v: str) -> bool:
-        """Check if edge exists."""
+        # check if edge exists
         return u in self._adj_list and v in self._adj_list[u]
 
     def num_vertices(self) -> int:
-        """Number of vertices."""
+        # number of vertices
         return len(self._adj_list)
 
     def num_edges(self) -> int:
-        """Number of edges."""
+        # number of edges
         if self.directed:
             return sum(len(neighbors) for neighbors in self._adj_list.values())
         else:
+            # divide by 2 since each edge stored twice
             return sum(len(neighbors) for neighbors in self._adj_list.values()) // 2
 
     def __str__(self) -> str:
