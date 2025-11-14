@@ -1,6 +1,3 @@
-# Graph data structure using adjacency list representation
-# Supports both directed and undirected weighted graphs
-
 from typing import Dict, List, Set, Tuple, Optional
 from collections import defaultdict
 

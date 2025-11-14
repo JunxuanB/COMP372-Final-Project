@@ -1,8 +1,3 @@
-"""
-Graph visualization and animation generation.
-Creates step-by-step animations of Dijkstra's and Prim's algorithms.
-"""
-
 import matplotlib.pyplot as plt
 import matplotlib.patches as mpatches
 import networkx as nx

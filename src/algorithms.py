@@ -1,6 +1,3 @@
-# Dijkstra's shortest path and Prim's MST algorithms
-# Both support heap and list-based priority queues
-
 from typing import Dict, List, Tuple, Set, Optional, Any
 from src.graph import Graph
 from src.fringe import BinaryHeap, SortedLinkedList
@@ -11,7 +8,7 @@ def dijkstra(
     source: str,
     fringe_type: str = 'heap'
 ) -> Tuple[Dict[str, float], Dict[str, Optional[str]], List[Dict[str, Any]]]:
-    # Dijkstra's algorithm - finds shortest paths from source to all vertices
+    # Dijkstra's algorithm
     # Returns: (distances dict, previous dict, step-by-step history)
 
     # Step 1: validate inputs
@@ -91,7 +88,7 @@ def prim(
     start: str,
     fringe_type: str = 'heap'
 ) -> Tuple[List[Tuple[str, str, float]], float, List[Dict[str, Any]]]:
-    # Prim's algorithm - finds minimum spanning tree
+    # Prim's algorithm
     # Returns: (MST edges, total weight, step history)
 
     # Step 1: validate inputs
@@ -182,8 +179,6 @@ def get_shortest_path(
     target: str,
     previous: Dict[str, Optional[str]]
 ) -> Optional[List[str]]:
-    # reconstruct shortest path from source to target
-    # uses predecessor map from Dijkstra
     # returns None if no path exists
 
     if target not in previous:
@@ -207,9 +202,7 @@ def get_shortest_path(
 
 
 def reconstruct_mst_graph(mst_edges: List[Tuple[str, str, float]]) -> Graph:
-    # create Graph object from MST edges
-    # useful for visualization
-
+    # for visualization
     mst_graph = Graph(directed=False)
 
     # add all MST edges

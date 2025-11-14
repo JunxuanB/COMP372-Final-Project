@@ -1,11 +1,5 @@
-# COMP372 Final Project - Required Python Dependencies
-# Generated on: 2025-11-07
-# Python Version: 3.9.6
-
-# Core visualization and graph libraries
 matplotlib>=3.5.0
 networkx>=2.6.0
 Pillow>=9.0.0
-
-# Optional but recommended for better performance
+pytest>=8.0.0
 numpy>=1.21.0

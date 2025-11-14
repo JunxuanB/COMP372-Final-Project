@@ -1,10 +1,5 @@
-# Priority queue implementations for Dijkstra and Prim
-# BinaryHeap: O(log n) operations
-# SortedLinkedList: O(n) insert, O(1) extract
-
 from typing import Any, Optional, List, Tuple
 from abc import ABC, abstractmethod
-
 
 class PriorityQueue(ABC):
     # abstract base class for priority queues
@@ -73,7 +68,6 @@ class BinaryHeap(PriorityQueue):
 
     def decrease_key(self, key: Any, new_priority: float) -> None:
         # decrease priority of existing element
-        # used in Dijkstra and Prim when we find shorter path/edge
         if key not in self._position:
             raise KeyError(f"Key {key} not found in heap")
 
@@ -138,9 +132,6 @@ class BinaryHeap(PriorityQueue):
 
 
 class SortedLinkedList(PriorityQueue):
-    # linked list that maintains sorted order by priority
-    # simpler than heap but slower insert (O(n))
-
     class _Node:
         # node for linked list
         def __init__(self, key: Any, priority: float, next_node: Optional['SortedLinkedList._Node'] = None):

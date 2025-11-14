@@ -1,16 +1,10 @@
-# Interactive UI for demonstrating Dijkstra and Prim algorithms
-# Simple text-based menu with visualization support
-
-import sys
 import os
 import subprocess
 import platform
-
 from src.graph import Graph
 from src.algorithms import dijkstra, prim
 from src.visualizer import draw_graph, create_dijkstra_animation, create_prim_animation
 import matplotlib.pyplot as plt
-
 
 def open_image(filepath):
     # try to open image with system default viewer
@@ -34,8 +28,6 @@ def create_sample_graph():
     graph.add_edge('A', 'C', 2.0)
     graph.add_edge('B', 'C', 1.0)
     graph.add_edge('B', 'D', 5.0)
-    graph.add_edge('C', 'D', 8.0)
-    graph.add_edge('C', 'E', 10.0)
     graph.add_edge('D', 'E', 2.0)
     return graph
 
