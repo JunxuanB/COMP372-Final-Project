@@ -1,8 +1,3 @@
-"""
-Tests for Dijkstra's and Prim's algorithms.
-Simple tests for student assignment - covers basic functionality only.
-"""
-
 import pytest
 from src.graph import Graph
 from src.algorithms import dijkstra, prim, get_shortest_path, reconstruct_mst_graph

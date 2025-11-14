@@ -1,5 +1,3 @@
-"""Unit tests for priority queue data structures - basic functionality only."""
-
 import unittest
 import sys
 import os

@@ -1,5 +1,3 @@
-"""Unit tests for Graph data structure - basic functionality only."""
-
 import unittest
 import sys
 import os
