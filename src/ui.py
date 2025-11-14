@@ -46,12 +46,11 @@ def print_menu():
     print("=" * 60)
     print("1. Load Sample Graph")
     print("2. Add Edge")
-    print("3. View Graph")
-    print("4. Run Dijkstra's Algorithm")
-    print("5. Run Prim's MST Algorithm")
-    print("6. Compare Heap vs List Performance")
-    print("7. Generate Animation")
-    print("8. Show Graph Summary")
+    print("3. Show Graph Summary")
+    print("4. Generate Graph Image")
+    print("5. Run and Generate GIF with Dijkstra's Algorithm")
+    print("6. Run and Generate GIF with Prim's Algorithm")
+    print("7. Compare Heap vs List Performance")
     print("0. Exit")
     print("=" * 60)
 
@@ -304,6 +303,9 @@ def main():
                 print("Error: Weight must be a number.")
 
         elif choice == '3':
+            show_graph_summary(graph)
+
+        elif choice == '4':
             print("\nGenerating graph visualization...")
             filename = visualize_graph(graph)
             print(f"✓ Graph saved to: {filename}")
@@ -312,21 +314,14 @@ def main():
             else:
                 print(f"  Please open '{filename}' manually")
 
-        elif choice == '4':
+        elif choice == '5':
             run_dijkstra_interactive(graph)
 
-        elif choice == '5':
+        elif choice == '6':
             run_prim_interactive(graph)
 
-        elif choice == '6':
-            compare_performance(graph)
-
         elif choice == '7':
-            print("\nAnimation generation is integrated into options 4 and 5.")
-            print("Run an algorithm and choose to generate animation when prompted.")
-
-        elif choice == '8':
-            show_graph_summary(graph)
+            compare_performance(graph)
 
         else:
             print("Invalid choice. Please try again.")
