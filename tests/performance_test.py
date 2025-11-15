@@ -1,8 +1,3 @@
-"""
-Performance benchmarking for Dijkstra and Prim algorithms.
-Compares BinaryHeap vs SortedLinkedList fringe implementations.
-"""
-
 import time
 import random
 import csv
@@ -15,10 +10,6 @@ from src.algorithms import dijkstra, prim
 
 
 def generate_random_graph(num_vertices: int, edge_probability: float = 0.3) -> Graph:
-    """
-    Generate a random connected graph.
-    edge_probability: chance of creating an edge between any two vertices
-    """
     graph = Graph(directed=False)
 
     # Create vertices
@@ -50,10 +41,6 @@ def benchmark_algorithm(
     start_node: str,
     num_runs: int = 5
 ) -> Tuple[float, int]:
-    """
-    Benchmark an algorithm and return average time and number of steps.
-    Returns (avg_time_ms, num_steps)
-    """
     times = []
 
     for _ in range(num_runs):
@@ -74,9 +61,6 @@ def benchmark_algorithm(
 
 
 def run_benchmarks() -> List[Dict]:
-    """
-    Run comprehensive benchmarks and return results.
-    """
     graph_sizes = [10, 20, 50, 100, 200, 500]
     algorithms = ['dijkstra', 'prim']
     fringe_types = ['heap', 'list']
@@ -126,7 +110,6 @@ def run_benchmarks() -> List[Dict]:
 
 
 def save_results_csv(results: List[Dict], filename: str = 'results/performance_data.csv'):
-    """Save benchmark results to CSV file."""
     os.makedirs('results', exist_ok=True)
 
     with open(filename, 'w', newline='') as f:
@@ -141,7 +124,6 @@ def save_results_csv(results: List[Dict], filename: str = 'results/performance_d
 
 
 def generate_comparison_charts(results: List[Dict]):
-    """Generate performance comparison charts."""
     os.makedirs('results', exist_ok=True)
 
     # Separate results by algorithm
@@ -226,7 +208,6 @@ def generate_comparison_charts(results: List[Dict]):
 
 
 def print_summary(results: List[Dict]):
-    """Print summary statistics."""
     print("\n" + "=" * 70)
     print("PERFORMANCE SUMMARY")
     print("=" * 70)
@@ -248,7 +229,6 @@ def print_summary(results: List[Dict]):
 
 
 def main():
-    """Main benchmark execution."""
     print("Graph Algorithm Performance Benchmark")
     print("Comparing Binary Heap vs Sorted Linked List\n")
 

@@ -17,10 +17,7 @@ def draw_graph(
     node_labels: Optional[Dict[str, str]] = None,
     current_node: Optional[str] = None
 ) -> Tuple[plt.Figure, plt.Axes, Dict[str, Tuple[float, float]]]:
-    """
-    Draw a static graph.
-    Returns (figure, axes, node_positions) for reuse.
-    """
+    # Returns (figure, axes, node_positions) for reuse.
     # Create figure if needed
     if ax is None:
         fig, ax = plt.subplots(figsize=(10, 8))
@@ -139,7 +136,7 @@ def draw_dijkstra_step(
     pos: Dict[str, Tuple[float, float]],
     ax: Optional[plt.Axes] = None
 ) -> Tuple[plt.Figure, plt.Axes]:
-    """Draw a single step of Dijkstra's algorithm."""
+    # Draw a single step of Dijkstra's algorithm.
     iteration = step['iteration']
     current = step.get('current')
     visited = step.get('visited', set())
@@ -183,7 +180,7 @@ def draw_prim_step(
     pos: Dict[str, Tuple[float, float]],
     ax: Optional[plt.Axes] = None
 ) -> Tuple[plt.Figure, plt.Axes]:
-    """Draw a single step of Prim's algorithm."""
+    # Draw a single step of Prim's algorithm.
     iteration = step['iteration']
     current = step.get('current')
     visited = step.get('visited', set())
@@ -226,10 +223,6 @@ def create_dijkstra_animation(
     output_path: str,
     duration: int = 800
 ) -> None:
-    """
-    Create animated GIF of Dijkstra's algorithm execution.
-    Duration in milliseconds per frame.
-    """
     # Create output directory if needed
     os.makedirs(os.path.dirname(output_path), exist_ok=True)
 
@@ -284,10 +277,6 @@ def create_prim_animation(
     output_path: str,
     duration: int = 800
 ) -> None:
-    """
-    Create animated GIF of Prim's algorithm execution.
-    Duration in milliseconds per frame.
-    """
     # Create output directory if needed
     os.makedirs(os.path.dirname(output_path), exist_ok=True)
 

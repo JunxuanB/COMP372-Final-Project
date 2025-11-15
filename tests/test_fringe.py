@@ -7,10 +7,7 @@ from src.fringe import BinaryHeap, SortedLinkedList
 
 
 class TestBinaryHeap(unittest.TestCase):
-    """Basic tests for BinaryHeap priority queue."""
-
     def test_insert_and_size(self):
-        """Test inserting elements and checking size."""
         heap = BinaryHeap()
         self.assertTrue(heap.is_empty())
 
@@ -21,7 +18,6 @@ class TestBinaryHeap(unittest.TestCase):
         self.assertEqual(heap.size(), 2)
 
     def test_extract_min_order(self):
-        """Test that extract_min returns elements in priority order."""
         heap = BinaryHeap()
         heap.insert("D", 10.0)
         heap.insert("A", 5.0)
@@ -36,7 +32,6 @@ class TestBinaryHeap(unittest.TestCase):
         self.assertEqual(priority2, 5.0)
 
     def test_decrease_key(self):
-        """Test decreasing priority of an element."""
         heap = BinaryHeap()
         heap.insert("A", 10.0)
         heap.insert("B", 5.0)
@@ -49,10 +44,7 @@ class TestBinaryHeap(unittest.TestCase):
 
 
 class TestSortedLinkedList(unittest.TestCase):
-    """Basic tests for SortedLinkedList priority queue."""
-
     def test_insert_and_extract(self):
-        """Test inserting and extracting elements."""
         slist = SortedLinkedList()
         slist.insert("C", 8.0)
         slist.insert("A", 5.0)
